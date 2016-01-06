@@ -5,6 +5,4 @@ import recipes from './recipes'
 
 
 // combine and export the reducers
-export default combineReducers({
-    recipes,
-})
+export default recipes

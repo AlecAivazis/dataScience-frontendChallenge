@@ -1,9 +1,12 @@
-// import action types
+// third party imports
+import {List} from 'immutable'
+// local imports
 import {
     selectRecipe,
     toggleIngredientSummary,
     toggleRecipeFilter,
 } from 'actions/types'
+
 
 // this reducer manages recipes in memory
 export default (state = initialRecipeState, {type, payload}) => {
@@ -31,14 +34,6 @@ export default (state = initialRecipeState, {type, payload}) => {
             ...state,
             filters: filters.has(name) ? filters.deleteIn(name) : filters.push(name),
         }
-
-    // otherwise if the payload represents a summary toggle
-    } else if (type === toggleIngredientSummary) {
-        // flip the value of state.showSummary
-        return {
-            ...state,
-            showSummary: !state.showSummary,
-        }
     }
 
     // this is an action we don't care about so leave the state unmutated
@@ -46,9 +41,8 @@ export default (state = initialRecipeState, {type, payload}) => {
 }
 
 const initialRecipeState = {
-    selected: [],
+    selected: ["Risotto"],
     filters: [],
-    showSummary: false,
     entries: [
         {
             "name": "Risotto",
