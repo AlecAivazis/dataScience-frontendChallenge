@@ -6,11 +6,12 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 // local imports
 import store from './store'
+import RecipeBook from './app'
 
 // the root level component for the application
 const app = (
     <Provider store={store}>
-        hello
+        <RecipeBook/>
     </Provider>
 )
 
