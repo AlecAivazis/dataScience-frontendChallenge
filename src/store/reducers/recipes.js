@@ -41,7 +41,7 @@ export default (state = initialRecipeState, {type, payload}) => {
 }
 
 const initialRecipeState = {
-    selected: ["Risotto"],
+    selected: [],
     filters: [],
     entries: [
         {

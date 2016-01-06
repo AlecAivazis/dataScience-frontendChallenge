@@ -19,7 +19,12 @@ const selectedIngredients = (recipes, selected) => uniq(flatten(selectedRecipes(
 const filteredRecipes = (recipes, filters) => recipes.filter(recipe => filters.length === 0 || union(recipe.ingredients, filters).length > 0)
 
 // select the recipe data out of the redux store
-const selector = ({entries, filters, selected}) => ({entries, filters, selected})
+const selector = ({recipes}) => ({
+    entries: recipes.entries,
+    filters: recipes.filters,
+    selected: recipes.selected
+})
+
 export default connect(selector)(({entries, filters, selected}) => (
     <main>
         <AppBar

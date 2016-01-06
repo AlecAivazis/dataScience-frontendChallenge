@@ -2,11 +2,11 @@
 import React from 'react'
 
 export default ({ingredients}) => (
-    <div>
+    <aside>
         {ingredients.map((ingredient) => (
             <div>
                 {ingredient}
             </div>
         ))}
-    </div>
+    </aside>
 )
