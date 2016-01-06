@@ -27,13 +27,29 @@ export default (state = initialRecipeState, {type, payload}) => {
     } else if (type === toggleRecipeFilter) {
         // the key to index the recipe with
         const name = payload
+
         // the previously selected recipes
-        const {filters} = state
+        const filters = [...state.filters]
+
         // if the recipe is already selection
-        return {
-            ...state,
-            filters: filters.has(name) ? filters.deleteIn(name) : filters.push(name),
+        if (filters.indexOf(name) > -1) {
+            filters.splice(filters.indexOf(name), 1)
+        } else {
+            filters.push(name)
         }
+
+        console.log(`toggling: ${name}`)
+        console.log(state.filters)
+        console.log(filters)
+
+        const foo = {
+            ...state,
+            filters,
+        }
+
+        console.log(foo.filters)
+
+        return foo
     }
 
     // this is an action we don't care about so leave the state unmutated
@@ -41,8 +57,8 @@ export default (state = initialRecipeState, {type, payload}) => {
 }
 
 const initialRecipeState = {
-    selected: List(),
-    filters: List(),
+    selected: [],
+    filters: [],
     entries: [
         {
             "name": "Risotto",

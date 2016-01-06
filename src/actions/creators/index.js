@@ -1,3 +1,3 @@
 export selectRecipes from './selectRecipes'
-export toggleRecipeFilterByName from './toggleRecipeFilterByName'
+export toggleRecipeFilter from './toggleRecipeFilter'
 export toggleFilterList from './toggleFilterList'

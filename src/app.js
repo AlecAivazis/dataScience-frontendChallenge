@@ -14,7 +14,10 @@ import {
     IngredientSummary,
     FilterList,
 } from './components'
-import {toggleFilterList} from 'actions/creators'
+import {
+    toggleFilterList,
+    toggleRecipeFilter,
+} from 'actions/creators'
 
 // apply filters to data set
 const allIngredients = (recipes) => uniq(flatten(recipes.map(recipe => recipe.ingredients)))
@@ -49,7 +52,8 @@ export default connect(selector)(({entries, filters, selected, ui, dispatch}) =>
         <FilterList
             show={ui.showFilterList}
             selectedFilters={filters}
-            filters={allIngredients(entries)}
+            possibleFilters={allIngredients(entries)}
+            selectFilter={(filter) => dispatch(toggleRecipeFilter(filter))}
         />
     </main>
 ))

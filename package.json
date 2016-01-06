@@ -26,5 +26,11 @@
     "react-tap-event-plugin": "^0.2.1",
     "redux": "^3.0.5",
     "webpack": "^1.12.9"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-loose": "^6.1.4",
+    "redux-devtools": "^3.0.1",
+    "redux-devtools-dock-monitor": "^1.0.1",
+    "redux-devtools-log-monitor": "^1.0.1"
   }
 }
