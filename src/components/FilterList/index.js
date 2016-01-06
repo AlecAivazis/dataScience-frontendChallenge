@@ -11,10 +11,7 @@ export default ({possibleFilters, selectedFilters, selectFilter, show}) => (
         open={show}
     >
         <List>
-            { possibleFilters.map(filter => {
-                console.log(selectedFilters)
-
-                return (
+            { possibleFilters.sort().map(filter => (
                 <ListItem
                     onClick={() => selectFilter(filter)}
                 >
@@ -23,7 +20,7 @@ export default ({possibleFilters, selectedFilters, selectFilter, show}) => (
                         label={filter}
                     />
                 </ListItem>
-            )})}
+            ))}
         </List>
     </LeftNav>
 )

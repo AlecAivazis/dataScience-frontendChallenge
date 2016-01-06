@@ -38,10 +38,6 @@ export default (state = initialRecipeState, {type, payload}) => {
             filters.push(name)
         }
 
-        console.log(`toggling: ${name}`)
-        console.log(state.filters)
-        console.log(filters)
-
         const foo = {
             ...state,
             filters,

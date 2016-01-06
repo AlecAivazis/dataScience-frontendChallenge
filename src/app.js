@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import AppBar from 'material-ui/lib/app-bar'
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
 import IconButton from 'material-ui/lib/icon-button'
-import union from 'lodash/array/union'
+import intersection from 'lodash/array/intersection'
 import findWhere from 'lodash/collection/findWhere'
 import uniq from 'lodash/array/uniq'
 import flatten from 'lodash/array/flatten'
@@ -23,7 +23,7 @@ import {
 const allIngredients = (recipes) => uniq(flatten(recipes.map(recipe => recipe.ingredients)))
 const selectedRecipes = (recipes, selected) => selected.map(name => findWhere(recipes, {name}))
 const selectedIngredients = (recipes, selected) => uniq(flatten(selectedRecipes(recipes, selected).map(recipe => recipe.ingredients)))
-const filteredRecipes = (recipes, filters) => recipes.filter(recipe => filters.length === 0 || union(recipe.ingredients, filters).length > 0)
+const filteredRecipes = (recipes, filters) => recipes.filter(recipe => filters.length === 0 || intersection(recipe.ingredients, filters).length == filters.length)
 
 // select the recipe data out of the redux store
 const selector = ({recipes, ui}) => ({

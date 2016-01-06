@@ -6,9 +6,8 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // local imports
-import createStore from './store'
+import store from './store'
 import RecipeBook from './app'
-import DevTools from 'components/DevTools'
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
@@ -18,11 +17,8 @@ injectTapEventPlugin();
 
 // the root level component for the application
 const app = (
-    <Provider store={createStore()}>
-        <div>
-            <RecipeBook/>
-            <DevTools />
-        </div>
+    <Provider store={store}>
+        <RecipeBook/>
     </Provider>
 )
 
