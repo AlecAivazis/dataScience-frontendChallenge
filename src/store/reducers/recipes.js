@@ -2,7 +2,7 @@
 import {List} from 'immutable'
 // local imports
 import {
-    selectRecipe,
+    selectRecipes,
     toggleIngredientSummary,
     toggleRecipeFilter,
 } from 'actions/types'
@@ -12,7 +12,7 @@ import {
 export default (state = initialRecipeState, {type, payload}) => {
 
     // if the payload represents a recipe to select
-    if (type === selectRecipe) {
+    if (type === selectRecipes) {
         // the key to index the recipe with
         const name = payload
         // the previously selected recipes
@@ -20,7 +20,7 @@ export default (state = initialRecipeState, {type, payload}) => {
         // if the recipe is already selection
         return {
             ...state,
-            selected: selected.has(name) ? selected.deleteIn(name) : selected.push(name),
+            selected: payload,
         }
 
     // otherwise if the payload is a recipe filter
@@ -41,8 +41,8 @@ export default (state = initialRecipeState, {type, payload}) => {
 }
 
 const initialRecipeState = {
-    selected: [],
-    filters: [],
+    selected: List(),
+    filters: List(),
     entries: [
         {
             "name": "Risotto",

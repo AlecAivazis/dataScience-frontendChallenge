@@ -1,12 +1,19 @@
 // third party imports
 import React from 'react'
+import List from 'material-ui/lib/lists/list'
+import ListItem from 'material-ui/lib/lists/list-item'
+// local imports
+import styles from './styles'
 
 export default ({ingredients}) => (
-    <aside>
+    <aside style={styles.container}>
+        <h1 style={styles.header}>
+            Ingredients
+        </h1>
         {ingredients.map((ingredient) => (
-            <div>
+            <span style={styles.ingredient}>
                 {ingredient}
-            </div>
+            </span>
         ))}
     </aside>
 )

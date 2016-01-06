@@ -23,7 +23,7 @@ module.exports = {
                 test: /\.css$/,
                 loaders: ['style', 'css'],
             }, {
-                test: /\.(png|jpg|ttf)$/,
+                test: /\.(png|jpg|ttf|json)$/,
                 loader: 'url',
                 query: {limit: 10000000},
             }
