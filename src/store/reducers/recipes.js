@@ -38,14 +38,10 @@ export default (state = initialRecipeState, {type, payload}) => {
             filters.push(name)
         }
 
-        const foo = {
+        return {
             ...state,
             filters,
         }
-
-        console.log(foo.filters)
-
-        return foo
     }
 
     // this is an action we don't care about so leave the state unmutated

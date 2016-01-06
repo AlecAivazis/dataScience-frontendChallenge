@@ -8,7 +8,7 @@ import styles from './styles'
 export default ({ingredients}) => (
     <aside style={styles.container}>
         <h1 style={styles.header}>
-            Ingredients
+            Unique Ingredients
         </h1>
         {ingredients.map((ingredient) => (
             <span style={styles.ingredient}>

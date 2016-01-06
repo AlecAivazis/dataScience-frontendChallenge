@@ -21,11 +21,10 @@ import {
 
 // apply filters to data set
 const allIngredients = (recipes) => uniq(flatten(recipes.map(recipe => recipe.ingredients)))
-const selectedRecipes = (recipes, selected) => selected.map(name => findWhere(recipes, {name}))
-const selectedIngredients = (recipes, selected) => uniq(flatten(selectedRecipes(recipes, selected).map(recipe => recipe.ingredients)))
+const selectedIngredients = (recipes, selected) => allIngredients(selected.map(name => findWhere(recipes, {name})))
 const filteredRecipes = (recipes, filters) => recipes.filter(recipe => filters.length === 0 || intersection(recipe.ingredients, filters).length == filters.length)
 
-// select the recipe data out of the redux store
+// select required data out of the redux store
 const selector = ({recipes, ui}) => ({
     entries: recipes.entries,
     filters: recipes.filters,
