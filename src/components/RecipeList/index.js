@@ -6,15 +6,15 @@ import TableFooter from 'material-ui/lib/table/table-footer';
 import TableHeader from 'material-ui/lib/table/table-header';
 import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableRow from 'material-ui/lib/table/table-row';
-import TableRowColumn from 'material-ui/lib/table/table-row-column';
-import {connect} from 'react-redux'
+import TableRowColumn from 'material-ui/lib/table/table-row-column'
 // local imports
 import {selectRecipes} from 'actions/creators'
 import styles from './styles'
+import FilterList from '../FilterList'
 
-export default connect()(({recipes, selected, dispatch}) => (
+export default (({recipes, selected, dispatch, showFilterSidebar, selectedFilters, possibleFilters, selectFilter}) => (
     <article
-        style={styles.container}
+        style={showFilterSidebar ? styles.container_thin : styles.container}
     >
         <Table
             selectable={true}
@@ -33,9 +33,10 @@ export default connect()(({recipes, selected, dispatch}) => (
             </TableHeader>
             <TableBody
                 deselectOnClickaway={false}
+                stripedRows={true}
             >
                 {recipes.map(({name, type, cook_time, ingredients}, i) => (
-                    <TableRow selected={selected.indexOf(name) > -1} striped={Boolean(i % 2)}>
+                    <TableRow selected={selected.indexOf(name) > -1} >
                         <TableRowColumn>{name}</TableRowColumn>
                         <TableRowColumn>{type}</TableRowColumn>
                         <TableRowColumn>{cook_time}</TableRowColumn>
@@ -44,5 +45,14 @@ export default connect()(({recipes, selected, dispatch}) => (
                 ))}
             </TableBody>
         </Table>
+        { showFilterSidebar && (
+            <FilterList
+                selectedFilters={selectedFilters}
+                possibleFilters={possibleFilters}
+                selectFilter={selectFilter}
+                dispatch={dispatch}
+                showToggleButton={false}
+            />
+        )}
     </article>
 ))

@@ -14,16 +14,16 @@ import {
 
 
 
-export default connect()(({possibleFilters, selectedFilters, selectFilter, show, dispatch}) => (
+export default ({possibleFilters, selectedFilters, selectFilter, show, dispatch, showToggleButton=true}) => (
     <LeftNav
         open={show}
         openRight={true}
         width={350}
     >
         <AppBar
-            title="Filters"
+            title="Ingredients"
             showMenuIconButton={false}
-            iconElementRight={<MenuButton onClick={() => dispatch(toggleFilterList())}/>}
+            iconElementRight={showToggleButton && <MenuButton onClick={() => dispatch(toggleFilterList())}/>}
         />
         <List>
             { possibleFilters.sort().map(filter => (
@@ -38,4 +38,4 @@ export default connect()(({possibleFilters, selectedFilters, selectFilter, show,
             ))}
         </List>
     </LeftNav>
-))
+)
