@@ -1,15 +1,14 @@
 export default {
     container: {
-        textAlign: 'center',
-        padding: 20,
+        marginBottom: 20,
     },
     ingredient: {
-        padding: 20,
+        padding: 10,
         display: 'inline-block',
         fontSize: 18,
     },
     header: {
         fontSize: 24,
-        marginBottom: 20,
-    }
+        marginBottom: 5,
+    },
 }

@@ -10,25 +10,34 @@ import {connect} from 'react-redux'
 import {MenuButton} from 'app'
 import {
     toggleFilterList,
+    toggleRecipeFilter,
 } from 'actions/creators'
+import {
+    allIngredients,
+} from 'utils'
 
 
 
-export default ({possibleFilters, selectedFilters, selectFilter, show, dispatch, showToggleButton=true}) => (
+const selector = ({recipes}) => ({
+    selectedFilters: recipes.filters,
+    possibleFilters: allIngredients(recipes.entries),
+})
+export default connect(selector)(({possibleFilters, selectedFilters, selectFilter, show, dispatch, showToggleButton=true}) => (
     <LeftNav
         open={show}
         openRight={true}
         width={350}
     >
         <AppBar
-            title="Ingredients"
+            title="Filter by Ingredients"
             showMenuIconButton={false}
             iconElementRight={showToggleButton && <MenuButton onClick={() => dispatch(toggleFilterList())}/>}
         />
         <List>
-            { possibleFilters.sort().map(filter => (
+            { possibleFilters.sort().map((filter, i) => (
                 <ListItem
-                    onClick={() => selectFilter(filter)}
+                    onClick={() => dispatch(toggleRecipeFilter(filter))}
+                    key={i}
                 >
                     <Checkbox
                         checked={selectedFilters.indexOf(filter) > -1}
@@ -38,4 +47,4 @@ export default ({possibleFilters, selectedFilters, selectFilter, show, dispatch,
             ))}
         </List>
     </LeftNav>
-)
+))

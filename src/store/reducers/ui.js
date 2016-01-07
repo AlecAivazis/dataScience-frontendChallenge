@@ -10,13 +10,11 @@ import {
 export default (state = initialState, {type, payload}) => {
     // if the payload represents a recipe to select
     if (type === toggleFilterList) {
-        console.log('toggling filters')
         // if the recipe is already selection
         return {
             ...state,
-            showFilterList: !state.showFilterList,
+            showFilterListSidebar: !state.showFilterListSidebar,
         }
-
     }
 
     // this is an action we don't care about so leave the state unmutated
@@ -24,5 +22,5 @@ export default (state = initialState, {type, payload}) => {
 }
 
 const initialState = {
-    showFilterList: false,
+    showFilterListSidebar: false,
 }
