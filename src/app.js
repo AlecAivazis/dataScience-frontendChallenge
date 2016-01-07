@@ -2,7 +2,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import AppBar from 'material-ui/lib/app-bar'
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
+import MenuIcon from 'material-ui/lib/svg-icons/navigation/menu'
 import IconButton from 'material-ui/lib/icon-button'
 import intersection from 'lodash/array/intersection'
 import findWhere from 'lodash/collection/findWhere'
@@ -17,7 +17,7 @@ import {
 import {
     toggleFilterList,
     toggleRecipeFilter,
-} from 'actions/creators'
+} from './actions/creators'
 
 // apply filters to data set
 const allIngredients = (recipes) => uniq(flatten(recipes.map(recipe => recipe.ingredients)))
@@ -32,7 +32,7 @@ const selector = ({recipes, ui}) => ({
     ui,
 })
 
-const MenuButton = ({...props}) => <IconButton {...props}><MoreVertIcon color="white"/></IconButton>
+export const MenuButton = ({...props}) => <IconButton {...props}><MenuIcon color="white"/></IconButton>
 
 export default connect(selector)(({entries, filters, selected, ui, dispatch}) => (
     <main>
