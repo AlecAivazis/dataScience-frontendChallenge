@@ -19,6 +19,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+		include: projectPaths.sourceDir,
             }, {
                 test: /\.css$/,
                 loaders: ['style', 'css'],
