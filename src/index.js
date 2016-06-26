@@ -9,6 +9,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import store from './store'
 import RecipeBook from './app'
 import {selectRecipes} from 'actions/creators'
+import DevTools from './DevTools'
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
@@ -27,7 +28,10 @@ if (previousSelection) {
 // the root level component for the application
 const app = (
     <Provider store={store}>
-        <RecipeBook/>
+        <div>
+            <RecipeBook/>
+            <DevTools/>
+        </div>
     </Provider>
 )
 
